@@ -1,0 +1,133 @@
+@import "tailwindcss";
+
+@theme {
+  /*fuentes y sus tamaños*/
+  --font-afacad: "Afacad", sans-serif;
+  --font-moderustic: "Moderustic", sans-serif;
+  
+  /*colores*/
+  --color-global: #303030 ;
+  --color-btn: #30ADA2;
+}
+
+@layer base{
+
+   #miportafolio{
+    font-family: var(--font-afacad);
+    font-weight: 500;
+    font-size: 2rem;
+  }
+  h1{
+   font-family: var(--font-afacad);
+  }
+  h2{
+   font-family: var(--font-afacad);
+   color: white;
+   font-size: clamp(1.75rem, 1.25rem + 2vw, 2.5rem);
+  }
+  p{
+    font-family: var(--font-afacad);
+    font-size: clamp(1rem, 0.95rem + 0.25vw, 1.5rem);
+    color: white;
+  }
+  li {
+    font-family: var(--font-afacad);
+    font-weight: 400;
+    font-size: 1.1rem;
+  }
+  
+
+}
+/* Transiciones y animaciones globales */
+@layer utilities {
+  .animate-fadeIn {
+    animation: fadeIn 0.25s ease-in-out forwards;
+  }
+  
+  .fade-enter-active,
+  .fade-leave-active {
+    transition: opacity 0.3s ease;
+  }
+
+  .fade-enter-from,
+  .fade-leave-to {
+    opacity: 0;
+  }
+}
+
+@layer components  {
+ .btn {
+    @apply h-12 inline-flex items-center  gap-2 px-6 text-sm font-semibold rounded-xl text-white border-2 box-border transition-all duration-300 cursor-pointer;
+    box-shadow: 0 0 5px rgba(48, 173, 162, 0.45);
+  }
+
+  .btn:hover {
+    box-shadow: 0 0 15px rgba(71, 222, 207, 0.805);
+  }
+
+  .btn-filled {
+    @apply  text-white border-transparent;
+    box-shadow: 0 0 5px rgba(48, 173, 162, 0.342);
+  }
+
+  .btn-filled:hover {
+    box-shadow: 0 0 10px rgba(71, 222, 207, 0.805);
+  }
+  .btn-primary{
+    @apply bg-btn text-white  px-2.5 py-2 rounded-md leading-none flex items-center justify-center border border-transparent
+    transition-all duration-300 ease-in-out ;
+    &:hover {
+       @apply   border-white;
+       box-shadow: 0 0 10px rgba(71, 222, 207, 0.805);
+
+    }
+  }
+  .project-mockup-bg {
+    @apply relative w-[80%] rounded-xl overflow-hidden shadow-2xl border border-slate-700/60 cursor-pointer 
+    transition-transform duration-300;
+  }
+  .project-mockup-bg:hover {
+    transform: scale(1.02);
+  }
+
+  /* Tarjetas de Laptop */
+  .project-mockup-fg {
+    @apply absolute -bottom-2 right-2 w-[60%] rounded-xl overflow-hidden shadow-2xl border-2 border-slate-600 cursor-pointer 
+    z-10 transition-transform duration-300;
+  }
+  .project-mockup-fg:hover {
+    transform: scale(1.05);
+  }
+
+  .mockup-overlay {
+    @apply absolute inset-0 bg-black/30 opacity-0 transition-opacity flex items-center justify-center text-white text-xs
+    font-semibold gap-1;
+  }
+  .group:hover .mockup-overlay {
+    @apply opacity-100;
+  }
+
+  /* Fondo oscuro galería */
+  .gallery-modal-overlay {
+    @apply fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex items-center justify-center p-4 md:p-8;
+  }
+
+  /* Botones de navegación (Flechas proyectos) */
+  .gallery-nav-btn {
+    @apply absolute top-1/2 -translate-y-1/2 bg-black/60 text-white p-3 rounded-full transition-colors;
+  }
+  .gallery-nav-btn:hover {
+    background-color: #30ADA2;
+  }
+
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
